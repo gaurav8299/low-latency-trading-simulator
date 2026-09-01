@@ -2,7 +2,6 @@
 
 ![C++](https://img.shields.io/badge/C++-20-blue.svg)
 ![CMake](https://img.shields.io/badge/CMake-3.20+-green.svg)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 A high-performance, deterministic C++20 limit order book and trading simulator designed for quantitative research, backtesting, and strategy validation.
 
@@ -75,7 +74,3 @@ ctest --output-on-failure
 ## Configuration
 
 System limits, strategy parameters, and fees are defined in `config/simulation.yaml`. See the file for detailed parameter documentation.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
