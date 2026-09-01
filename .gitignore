@@ -1,0 +1,59 @@
+# ==============================================================================
+# .gitignore — Files that Git should NOT track
+# ==============================================================================
+#
+# WHAT: Tells Git which files to ignore when committing.
+# WHY:  Build artifacts, IDE files, credentials, and logs should NOT be
+#        in version control. They differ per machine and may contain secrets.
+#
+# ==============================================================================
+
+# -- Build artifacts --
+build/
+cmake-build-*/
+out/
+
+# -- IDE files --
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.vs/
+
+# -- Credentials & secrets --
+# CRITICAL: Never commit real credentials
+.env
+*.pem
+*.key
+
+# -- Compiled binaries --
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+
+# -- Logs --
+logs/
+*.log
+
+# -- OS junk --
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -- Python --
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+
+# -- Docker --
+docker-compose.override.yml

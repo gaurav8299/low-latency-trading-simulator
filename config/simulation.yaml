@@ -1,0 +1,102 @@
+# ==============================================================================
+# HFT-Style Trading Simulator — Configuration
+# ==============================================================================
+#
+# WHAT: All configurable parameters for the simulator.
+# WHY:  Risk limits, fees, and behavior should be changeable WITHOUT
+#        modifying source code. This file is the single source of truth.
+#
+# IMPORTANT:
+#   - trading_mode MUST be "simulation" or "paper"
+#   - Live trading is NOT supported
+#   - Never put API keys or passwords in this file
+#   - Use environment variables for credentials (see .env.example)
+#
+# ==============================================================================
+
+# --------------------------------------------------
+# Trading Mode
+# --------------------------------------------------
+# "simulation" = fully simulated, no external connections
+# "paper"      = simulated orders, may use real market data
+# There is NO live mode. Real trading is disabled.
+# --------------------------------------------------
+trading_mode: simulation
+
+# --------------------------------------------------
+# Capital & Portfolio
+# --------------------------------------------------
+initial_capital: 100000.0   # Starting cash (USD)
+
+# --------------------------------------------------
+# Risk Limits
+# --------------------------------------------------
+# These limits protect you from catastrophic losses.
+# The risk engine checks ALL of these before every order.
+# If any limit is breached, the kill switch activates.
+# --------------------------------------------------
+risk:
+  max_order_quantity: 1000        # Max shares per order
+  max_order_value: 10000.0        # Max dollar value per order
+  max_position: 5000              # Max shares held (long or short)
+  max_gross_exposure: 200000.0    # Max total market exposure
+  max_net_exposure: 100000.0      # Max directional exposure
+  max_daily_loss: 5000.0          # Max loss before kill switch
+  max_drawdown: 10000.0           # Max peak-to-trough decline
+  max_open_orders: 100            # Max simultaneous open orders
+  max_orders_per_second: 50       # Rate limit
+  consecutive_loss_limit: 10      # Kill switch after N consecutive losses
+  price_deviation_pct: 5.0        # Reject orders >5% from mid price
+  stale_data_timeout_ms: 5000     # Kill switch if no data for 5 seconds
+
+# --------------------------------------------------
+# Transaction Costs
+# --------------------------------------------------
+# All costs are in basis points (1 bp = 0.01%)
+# These make backtests more realistic.
+# --------------------------------------------------
+fees:
+  maker_fee_bps: 1.0              # Fee for providing liquidity
+  taker_fee_bps: 2.5              # Fee for taking liquidity
+  slippage_bps: 0.5               # Estimated slippage per trade
+
+# --------------------------------------------------
+# Latency Simulation (microseconds)
+# --------------------------------------------------
+# These simulate realistic delays in the system.
+# Real HFT systems have latencies in microseconds.
+# --------------------------------------------------
+latency:
+  market_data_us: 50              # Market data arrival delay
+  strategy_processing_us: 10      # Time for strategy to decide
+  risk_check_us: 5                # Time for risk check
+  order_transmission_us: 100      # Time to send order to exchange
+  exchange_matching_us: 20        # Time for exchange to match
+  execution_report_us: 80         # Time for fill report to return
+
+# --------------------------------------------------
+# Strategy Configuration
+# --------------------------------------------------
+strategy:
+  name: "market_making_demo"      # Which strategy to run
+  parameters:
+    spread_bps: 10.0              # Bid-ask spread to quote
+    order_size: 100               # Shares per order
+    max_position: 500             # Strategy-specific position limit
+    update_interval_ms: 100       # How often to update quotes
+
+# --------------------------------------------------
+# Market Data
+# --------------------------------------------------
+data:
+  source: "csv"                   # "csv" for file replay
+  file: "data/sample/sample_market_data.csv"
+  replay_speed: 1.0               # 1.0 = real-time, 10.0 = 10x, 0 = max speed
+
+# --------------------------------------------------
+# Logging
+# --------------------------------------------------
+logging:
+  level: "info"                   # debug, info, warning, error, critical
+  file: "logs/simulator.log"     # Log file path (empty = console only)
+  console: true                   # Also print to terminal

@@ -1,0 +1,34 @@
+# ==============================================================================
+# Sample Market Data — SYNTHETIC (NOT REAL)
+# ==============================================================================
+#
+# WARNING: This is SYNTHETIC (fake) data generated for testing purposes.
+# It does NOT represent real market data from any exchange.
+# Do NOT use this data to draw conclusions about real market behavior.
+#
+# Format:
+#   timestamp           — ISO 8601 timestamp (microsecond precision)
+#   instrument          — Instrument/symbol identifier
+#   side                — BUY or SELL
+#   price               — Price per unit
+#   quantity            — Number of units
+#   event_type          — NEW, CANCEL, TRADE, MODIFY
+#
+# ==============================================================================
+timestamp,instrument,side,price,quantity,event_type
+2024-01-15T09:30:00.000001,SYNTH-A,BUY,100.00,500,NEW
+2024-01-15T09:30:00.000002,SYNTH-A,BUY,99.95,300,NEW
+2024-01-15T09:30:00.000003,SYNTH-A,BUY,99.90,200,NEW
+2024-01-15T09:30:00.000010,SYNTH-A,SELL,100.05,400,NEW
+2024-01-15T09:30:00.000011,SYNTH-A,SELL,100.10,600,NEW
+2024-01-15T09:30:00.000012,SYNTH-A,SELL,100.15,100,NEW
+2024-01-15T09:30:00.100000,SYNTH-A,BUY,100.05,200,NEW
+2024-01-15T09:30:00.100001,SYNTH-A,SELL,100.05,200,TRADE
+2024-01-15T09:30:00.200000,SYNTH-A,SELL,99.95,150,NEW
+2024-01-15T09:30:00.200001,SYNTH-A,BUY,99.95,150,TRADE
+2024-01-15T09:30:00.300000,SYNTH-A,BUY,99.90,200,CANCEL
+2024-01-15T09:30:00.400000,SYNTH-A,BUY,100.02,350,NEW
+2024-01-15T09:30:00.500000,SYNTH-A,SELL,100.02,100,TRADE
+2024-01-15T09:30:00.500001,SYNTH-A,SELL,100.02,250,TRADE
+2024-01-15T09:30:01.000000,SYNTH-A,BUY,99.98,1000,NEW
+2024-01-15T09:30:01.000100,SYNTH-A,SELL,100.03,800,NEW
