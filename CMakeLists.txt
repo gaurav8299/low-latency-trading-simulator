@@ -35,6 +35,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 # Source files
 file(GLOB_RECURSE LIB_SOURCES
     ${CMAKE_SOURCE_DIR}/src/common/*.cpp
+    ${CMAKE_SOURCE_DIR}/src/orderbook/*.cpp
 )
 
 # Core Library
@@ -61,3 +62,4 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 add_subdirectory(tests)
+add_subdirectory(benchmarks)
